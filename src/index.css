@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+/* Apply globally */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%; /* ✅ allow content to grow */
+  overflow-y: auto; /* ✅ normal scroll */
+}
+
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+
+/* Fade in animation for main heading */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+}
+
+/* Blinking cursor for typing effect */
+@keyframes blink {
+  0%, 50%, 100% { border-color: transparent; }
+  25%, 75% { border-color: white; }
+}
+
+.animate-blink {
+  animation: blink 0.75s step-end infinite;
+}
+
