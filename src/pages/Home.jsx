@@ -62,7 +62,7 @@ const Home = () => {
       </div>
 
       {/* Customer Form */}
-      <div className="mt-16 px-4 md:px-20">
+      <div className=" px-4 md:px-20">
         <CustomerForm />
       </div>
     </div>

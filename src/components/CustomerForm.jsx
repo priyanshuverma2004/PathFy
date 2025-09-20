@@ -109,7 +109,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full font-bold bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-md text-white py-2 px-4 rounded hover:bg-indigo-700 transition"
+          className="w-full font-bold bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-md text-white py-2 px-4 rounded hover:bg-indigo-700 transition cursor-pointer"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

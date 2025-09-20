@@ -1,5 +1,6 @@
 import React from "react";
 import { Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -68,7 +69,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Contact Info */}
-      <div className="mt-8 pt-8 text-white text-sm px-6 md:px-12 flex flex-row items-center gap-2 justify-center">
+      <div className="mt-8 pt-8 mr-5 ml-5 text-white text-sm px-6 md:px-12 flex flex-row items-center gap-2 justify-center">
         <div className="flex items-center gap-2">
           <Mail className="w-4 h-4" /> info.pathfy@gmail.com
         </div>
@@ -102,8 +103,12 @@ const Footer = () => {
       <div className="border-t border-gray-300 pt-3 flex flex-col md:flex-row items-center justify-center md:justify-between text-gray-400 text-sm px-6 md:px-12 gap-2">
         <p>© {new Date().getFullYear()} Pathfy. All rights reserved. | Pathfy.in</p>
         <div className="flex flex-col md:flex-row md:space-x-6 gap-1">
-          <a href="/terms-and-conditions" className="hover:text-indigo-500 transition">Terms & Conditions</a>
-          <a href="/privacy-policy" className="hover:text-indigo-500 transition">Privacy Policy</a>
+          <Link to="/terms-and-conditions" className="hover:text-indigo-500 transition">
+    Terms & Conditions
+  </Link>
+  <Link to="/privacy-policy" className="hover:text-indigo-500 transition">
+    Privacy Policy
+  </Link>
         </div>
       </div>
     </footer>
