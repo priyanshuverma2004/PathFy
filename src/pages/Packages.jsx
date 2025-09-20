@@ -49,19 +49,21 @@ const PackagePage = () => {
     // Apply search filter
     if (searchTerm.trim() !== "") {
       filtered = filtered.filter(
-        pkg =>
+        (pkg) =>
           pkg.name?.toLowerCase().includes(searchTerm.toLowerCase().trim()) &&
-          pkg.slug // Only packages with valid slug
+          pkg.slug
       );
     } else {
-      filtered = filtered.filter(pkg => pkg.slug); // also filter non-slug packages
+      filtered = filtered.filter((pkg) => pkg.slug);
     }
 
     return filtered;
   };
 
+  const packages = getPackages();
+
   return (
-    <div className="py-10 px-6 md:px-12 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen">
+    <div className="pt-24 px-6 md:px-12 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen">
       <h1 className="text-4xl md:text-5xl font-extrabold text-center text-indigo-600 mb-12">
         Explore Our Packages ✈️
       </h1>
@@ -72,14 +74,14 @@ const PackagePage = () => {
           type="text"
           placeholder="Search packages..."
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="border rounded-lg px-4 py-2 w-80 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
       {/* Category Buttons */}
-      <div className="flex justify-center space-x-4 mb-10 flex-wrap">
-        {categories.map(cat => (
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {categories.map((cat) => (
           <motion.button
             key={cat}
             whileTap={{ scale: 0.95 }}
@@ -96,13 +98,27 @@ const PackagePage = () => {
       </div>
 
       {/* Packages Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {getPackages().length > 0 ? (
-          getPackages().map(pkg => <CarouselCard key={pkg.slug} pkg={pkg} />)
+      {packages.length > 0 ? (
+        packages.length === 1 ? (
+          <div className="flex justify-center">
+            <div className="w-[280px]">
+              <CarouselCard pkg={packages[0]} />
+            </div>
+          </div>
         ) : (
-          <p className="text-center text-gray-600 col-span-full">No packages found 😔</p>
-        )}
-      </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {packages.map((pkg) => (
+              <div key={pkg.slug} className="w-[280px]">
+                <CarouselCard pkg={pkg} />
+              </div>
+            ))}
+          </div>
+        )
+      ) : (
+        <p className="text-center text-gray-600 col-span-full">
+          No packages found 😔
+        </p>
+      )}
     </div>
   );
 };

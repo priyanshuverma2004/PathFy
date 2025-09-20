@@ -10,34 +10,36 @@ const CarouselCard = ({ pkg }) => {
   return (
     <Link to={`/packages/${safeSlug}`}>
       <motion.div
-        whileHover={{ scale: 1.08, y: -10 }}
+        whileHover={{ scale: 1.05, y: -8 }}
         transition={{ type: "spring", stiffness: 300 }}
-        className="min-w-[250px] md:min-w-[195px] bg-white rounded-2xl shadow-2xl overflow-hidden relative cursor-pointer
-                   w-1/2 sm:w-1/3 md:w-auto"
+        className="bg-white rounded-2xl shadow-2xl overflow-hidden relative cursor-pointer 
+                   h-[380px] flex flex-col"
       >
-        {/* Image as background */}
-        <div className="relative w-full h-72 md:h-80">
+        {/* Image Section */}
+        <div className="relative w-full h-[220px]">
           <img
             src={pkg.image}
             alt={pkg.name}
             loading="lazy"
             className="w-full h-full object-cover"
           />
+        </div>
 
-          {/* Overlay for text */}
-          <div className="absolute inset-0 bg-black/10 flex flex-col justify-end p-5 space-y-2 rounded-2xl">
-            <h3 className="text-white text-lg md:text-xl font-bold">
+        {/* Info Section */}
+        <div className="flex flex-col justify-between p-5 flex-grow">
+          <div>
+            <h3 className="text-gray-900 text-lg md:text-xl font-bold truncate">
               {pkg.name}
             </h3>
-            <p className="text-gray-200 text-sm md:text-base">{pkg.duration}</p>
-            <div className="flex items-center justify-between mt-3">
-              <p className="text-indigo-400 font-semibold text-base md:text-lg">
-                ₹{pkg.price}
-              </p>
-              <span className="px-4 py-2 bg-indigo-600 text-white text-sm md:text-base rounded-lg shadow hover:bg-indigo-700 transition hover:scale-110">
-                Explore
-              </span>
-            </div>
+            <p className="text-gray-600 text-sm md:text-base">{pkg.duration}</p>
+          </div>
+          <div className="flex items-center justify-between mt-3">
+            <p className="text-indigo-600 font-semibold text-base md:text-lg">
+              ₹{pkg.price}
+            </p>
+            <span className="px-4 py-2 bg-indigo-600 text-white text-sm md:text-base rounded-lg shadow hover:bg-indigo-700 transition hover:scale-110">
+              Explore
+            </span>
           </div>
         </div>
       </motion.div>

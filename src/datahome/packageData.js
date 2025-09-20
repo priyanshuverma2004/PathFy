@@ -8,7 +8,7 @@ export const featuredSections = {
   },
   international: {
     title: "International Escapes",
-    image: "https://res.cloudinary.com/levo127/image/upload/v1758297013/Packages/015f8654496e46c1bb07bd1b93a09473_imdwwp.jpg",
+    image: "https://res.cloudinary.com/levo127/image/upload/v1758364303/Packages/Gemini_Generated_Image_cq2k3ncq2k3ncq2k_nwb7ic.png",
   },
   romantic: {
     title: "Romantic Getaways",
@@ -20,7 +20,7 @@ export const featuredSections = {
   },
   group: {
     title: "Group Trips",
-    image: "../assets/feature/indiaFeature.png",
+    image: "https://res.cloudinary.com/levo127/image/upload/v1758364303/Packages/Gemini_Generated_Image_x4p5n4x4p5n4x4p5_vhxewv.png",
   },
 };
 

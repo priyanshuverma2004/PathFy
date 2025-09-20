@@ -6,7 +6,7 @@ const Carousel = ({ featured, packages }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
 
-  // Auto-scroll every 3s
+  // Auto-scroll every 5s
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % packages.length);
@@ -39,8 +39,7 @@ const Carousel = ({ featured, packages }) => {
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="flex-shrink-0 px-2 w-1/2 sm:w-1/3 lg:w-1/5" 
-            // mobile: 2 cards → 50% | tablet: 3 cards → 33% | desktop: 5 cards → 20%
+            className="flex-shrink-0 px-2 w-[280px]" // ✅ fixed width for all cards
           >
             <CarouselCard pkg={pkg} />
           </div>
