@@ -11,7 +11,6 @@ const teamMembers = [
     role: "CEO & Founder",
     image: "/assets/team/Sagar.png",
   },
-  ,
   {
     name: "Vayu Jain",
     role: "CMO",
@@ -26,12 +25,12 @@ const teamMembers = [
 
 const TeamSection = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-slate-950 py-20">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-indigo-600 mb-4">
+        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
           Meet Our Team
         </h2>
-        <p className="text-gray-500 mb-12">
+        <p className="text-slate-400 mb-12">
           The creative minds behind our success
         </p>
 
@@ -42,7 +41,7 @@ const TeamSection = () => {
               className="flex flex-col items-center transition transform hover:scale-105"
             >
               {/* Circular Image */}
-              <div className="w-40 h-40 rounded-full shadow-xl overflow-hidden ring-4 ring-indigo-200">
+              <div className="w-40 h-40 rounded-full shadow-xl overflow-hidden ring-4 ring-orange-500/40">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -52,8 +51,8 @@ const TeamSection = () => {
 
               {/* Name and Role */}
               <div className="mt-4 text-center">
-                <p className="font-bold text-gray-800">{member.name}</p>
-                <p className="text-gray-500 text-sm">{member.role}</p>
+                <p className="font-bold text-white">{member.name}</p>
+                <p className="text-slate-400 text-sm">{member.role}</p>
               </div>
             </div>
           ))}

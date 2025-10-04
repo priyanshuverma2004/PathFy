@@ -20,9 +20,8 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // 🔹 Keys must exactly match your Google Sheet headers
     const formDataToSend = new FormData();
-    formDataToSend.append("Date", new Date().toISOString()); // Sheet auto-fills date
+    formDataToSend.append("Date", new Date().toISOString());
     formDataToSend.append("fullName", formData.fullName);
     formDataToSend.append("email", formData.email);
     formDataToSend.append("contact", formData.contact);
@@ -31,7 +30,7 @@ const ContactForm = () => {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwu2jAEg9Ns1ZmkIyc60DGHq0Mrgv1CBjAubV_dQ9GgHN7LyADwqyE-0BX44KpVX5PwtQ/exec", // replace with your own deployed web app URL
+        "https://script.google.com/macros/s/AKfycbwu2jAEg9Ns1ZmkIyc60DGHq0Mrgv1CBjAubV_dQ9GgHN7LyADwqyE-0BX44KpVX5PwtQ/exec",
         {
           method: "POST",
           body: formDataToSend,
@@ -39,8 +38,6 @@ const ContactForm = () => {
       );
 
       setSubmitStatus("success");
-
-      // Reset form after success
       setFormData({
         fullName: "",
         email: "",
@@ -57,72 +54,78 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white shadow-xl rounded-2xl p-8 max-w-md mx-auto">
-      <h2 className="text-4xl flex justify-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mb-6">
-        Contact Form 
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
-          placeholder="Full Name"
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="text"
-          name="contact"
-          value={formData.contact}
-          onChange={handleChange}
-          placeholder="Contact Number"
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="text"
-          name="destination"
-          value={formData.destination}
-          onChange={handleChange}
-          placeholder="Destination"
-          className="w-full border p-2 rounded"
-          required
-        />
-        <textarea
-          name="requirement"
-          value={formData.requirement}
-          onChange={handleChange}
-          placeholder="Your Requirement"
-          className="w-full border p-2 rounded"
-          rows="3"
-        />
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full font-bold bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-md text-white py-2 px-4 rounded hover:bg-indigo-700 transition cursor-pointer"
-        >
-          {isSubmitting ? "Submitting..." : "Submit"}
-        </button>
-      </form>
+    <div className="bg-slate-950 min-h-screen py-16 px-6 flex justify-center items-center">
+      <div className="bg-slate-900/60 shadow-2xl rounded-2xl p-8 max-w-md w-full border border-slate-800">
+        <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 mb-8">
+          Contact Form ✨
+        </h2>
 
-      {submitStatus === "success" && (
-        <p className="text-green-600 mt-4">✅ Form submitted successfully!</p>
-      )}
-      {submitStatus === "error" && (
-        <p className="text-red-600 mt-4">
-          ❌ Something went wrong. Try again later.
-        </p>
-      )}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+            placeholder="Full Name"
+            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            required
+          />
+          <input
+            type="text"
+            name="contact"
+            value={formData.contact}
+            onChange={handleChange}
+            placeholder="Contact Number"
+            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            required
+          />
+          <input
+            type="text"
+            name="destination"
+            value={formData.destination}
+            onChange={handleChange}
+            placeholder="Destination"
+            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            required
+          />
+          <textarea
+            name="requirement"
+            value={formData.requirement}
+            onChange={handleChange}
+            placeholder="Your Requirement"
+            rows="3"
+            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          ></textarea>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full font-bold bg-gradient-to-r from-orange-500 to-pink-600 shadow-lg text-white py-3 px-4 rounded-lg hover:scale-105 transition-transform"
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </button>
+        </form>
+
+        {submitStatus === "success" && (
+          <p className="text-green-400 mt-4 text-center">
+            ✅ Form submitted successfully!
+          </p>
+        )}
+        {submitStatus === "error" && (
+          <p className="text-red-400 mt-4 text-center">
+            ❌ Something went wrong. Try again later.
+          </p>
+        )}
+      </div>
     </div>
   );
 };

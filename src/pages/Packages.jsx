@@ -12,7 +12,6 @@ const PackagePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Combine all packages
   const allPackages = [
     ...indiaPackages,
     ...internationalPackages,
@@ -22,7 +21,6 @@ const PackagePage = () => {
 
   const categories = ["all", "india", "international", "adventure", "romantic"];
 
-  // Filter packages
   const getPackages = () => {
     let filtered = [];
 
@@ -46,7 +44,6 @@ const PackagePage = () => {
         filtered = allPackages;
     }
 
-    // Apply search filter
     if (searchTerm.trim() !== "") {
       filtered = filtered.filter(
         (pkg) =>
@@ -63,8 +60,8 @@ const PackagePage = () => {
   const packages = getPackages();
 
   return (
-    <div className="pt-24 px-6 md:px-12 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-indigo-600 mb-12">
+    <div className="pt-24 px-6 mb-10 md:px-12 min-h-screen bg-slate-950 text-gray-200">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-600">
         Explore Our Packages ✈️
       </h1>
 
@@ -75,7 +72,7 @@ const PackagePage = () => {
           placeholder="Search packages..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border rounded-lg px-4 py-2 w-80 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="border rounded-lg px-4 py-2 w-80 bg-slate-800/50 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
       </div>
 
@@ -88,8 +85,8 @@ const PackagePage = () => {
             onClick={() => setSelectedCategory(cat)}
             className={`px-6 py-2 rounded-full text-sm md:text-base font-medium shadow-md transition ${
               selectedCategory === cat
-                ? "bg-indigo-600 text-white"
-                : "bg-white text-gray-800 hover:bg-indigo-100"
+                ? "bg-gradient-to-r from-orange-500 to-pink-600 text-white"
+                : "bg-slate-900/50 text-gray-200 hover:bg-slate-800/70"
             }`}
           >
             {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -115,7 +112,7 @@ const PackagePage = () => {
           </div>
         )
       ) : (
-        <p className="text-center text-gray-600 col-span-full">
+        <p className="text-center text-gray-400 col-span-full">
           No packages found 😔
         </p>
       )}

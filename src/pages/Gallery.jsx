@@ -34,9 +34,9 @@ const GalleryPage = () => {
         [];
 
   return (
-    <div className="relative min-h-screen bg-white py-16 px-4 overflow-hidden">
+    <div className="relative min-h-screen bg-slate-950 py-16 px-4 overflow-hidden">
       {/* Page Header */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-indigo-600">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
         Gallery
       </h1>
 
@@ -46,8 +46,8 @@ const GalleryPage = () => {
           onClick={() => setSelectedCategory("All")}
           className={`px-5 py-2 rounded-full font-semibold transition ${
             selectedCategory === "All"
-              ? "bg-indigo-600 text-white shadow-lg"
-              : "bg-white text-gray-700 border border-gray-300 hover:bg-indigo-100"
+              ? "bg-orange-500 text-white shadow-lg"
+              : "bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700"
           }`}
         >
           All
@@ -58,8 +58,8 @@ const GalleryPage = () => {
             onClick={() => setSelectedCategory(cat.category)}
             className={`px-5 py-2 rounded-full font-semibold transition ${
               selectedCategory === cat.category
-                ? "bg-indigo-600 text-white shadow-lg"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-indigo-100"
+                ? "bg-orange-500 text-white shadow-lg"
+                : "bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700"
             }`}
           >
             {cat.category}
@@ -87,8 +87,8 @@ const GalleryPage = () => {
               rotateX: hoveredImage === img ? -10 : 0,
             }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            className={`bg-white rounded-2xl shadow-2xl overflow-hidden cursor-pointer relative transition-all duration-300 ${
-              activeImage ? "opacity-20" : "opacity-100"
+            className={`bg-slate-900/50 rounded-2xl shadow-2xl overflow-hidden cursor-pointer relative transition-all duration-300 ${
+              activeImage ? "opacity-30" : "opacity-100"
             }`}
           >
             <img
@@ -108,7 +108,7 @@ const GalleryPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50"
+            className="fixed top-0 left-0 w-full h-full bg-black/90 flex justify-center items-center z-50"
             onClick={() => setActiveImage(null)}
           >
             <motion.div
@@ -116,13 +116,13 @@ const GalleryPage = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full overflow-hidden cursor-auto relative"
+              className="bg-slate-900 rounded-3xl shadow-2xl max-w-5xl w-full overflow-hidden cursor-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={activeImage}
                 alt="fullscreen"
-                className="w-full h-auto max-h-[90vh] object-contain"
+                className="w-full h-auto max-h-[90vh] object-contain rounded-2xl"
               />
             </motion.div>
           </motion.div>

@@ -10,79 +10,52 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isHome) return;
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      if (isHome && window.scrollY < 10) setIsScrolled(false);
+      else setIsScrolled(true);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
 
-  // Background on scroll
-  const navBg = isHome
-    ? isScrolled
-      ? "bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-md"
-      : "bg-transparent"
-    : "bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-md";
-
-  const textColor = "text-white";
-
-  const hoverColor = isHome
-    ? "hover:text-cyan-400"
-    : "hover:text-cyan-600";
-
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${navBg}`}
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] md:w-[85%] 
+      transition-all duration-500 ease-in-out ${
+        isScrolled
+          ? "bg-slate-900/60 border border-orange-500/30 shadow-lg shadow-orange-500/20 backdrop-blur-xl"
+          : "bg-slate-900/40 border border-orange-500/20 backdrop-blur-lg"
+      } rounded-full`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Logo */}
         <Link
           to="/"
-          className={`text-2xl font-bold transition-colors duration-300 transform hover:scale-115 ${textColor}`}
+          className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent"
         >
           Pathfy
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="space-x-6 hidden md:flex">
-          <Link
-            to="/"
-            className={`transition duration-300 transform hover:scale-115 font-bold ${textColor} ${hoverColor}`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/packages"
-            className={`transition duration-300 transform hover:scale-115 font-bold ${textColor} ${hoverColor}`}
-          >
-            Packages
-          </Link>
-          <Link
-            to="/gallery"
-            className={`transition duration-300 transform hover:scale-115 font-bold ${textColor} ${hoverColor}`}
-          >
-            Gallery
-          </Link>
-          <Link
-            to="/aboutus"
-            className={`transition duration-300 transform hover:scale-115 font-bold ${textColor} ${hoverColor}`}
-          >
-            About Us
-          </Link>
-          <Link
-            to="/contactus"
-            className={`transition duration-300 transform hover:scale-115 font-bold ${textColor} ${hoverColor}`}
-          >
-            Contact Us
-          </Link>
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-8">
+          {["Home", "Packages", "Gallery", "About Us", "Contact Us"].map(
+            (item) => (
+              <Link
+                key={item}
+                to={
+                  item === "Home"
+                    ? "/"
+                    : `/${item.toLowerCase().replace(/\s+/g, "")}`
+                }
+                className="text-white font-semibold hover:text-orange-400 transition-all duration-300 hover:scale-105"
+              >
+                {item}
+              </Link>
+            )
+          )}
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Hamburger for Mobile */}
         <button
           className="md:hidden flex flex-col space-y-1 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -95,42 +68,23 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-lg px-6 py-4 space-y-4">
-          <Link
-            to="/"
-            className={`block font-bold ${textColor} ${hoverColor}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            to="/packages"
-            className={`block font-bold ${textColor} ${hoverColor}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Packages
-          </Link>
-          <Link
-            to="/gallery"
-            className={`block font-bold ${textColor} ${hoverColor}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Gallery
-          </Link>
-          <Link
-            to="/aboutus"
-            className={`block font-bold ${textColor} ${hoverColor}`}
-            onClick={() => setIsOpen(false)}
-          >
-            About Us
-          </Link>
-          <Link
-            to="/contactus"
-            className={`block font-bold ${textColor} ${hoverColor}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Contact Us
-          </Link>
+        <div className="md:hidden bg-slate-900/90 backdrop-blur-xl border-t border-orange-500/20 px-6 py-4 rounded-b-3xl space-y-4">
+          {["Home", "Packages", "Gallery", "About Us", "Contact Us"].map(
+            (item) => (
+              <Link
+                key={item}
+                to={
+                  item === "Home"
+                    ? "/"
+                    : `/${item.toLowerCase().replace(/\s+/g, "")}`
+                }
+                className="block text-white font-semibold hover:text-orange-400 transition-all"
+                onClick={() => setIsOpen(false)}
+              >
+                {item}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>

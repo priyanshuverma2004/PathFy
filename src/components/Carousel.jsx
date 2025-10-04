@@ -6,7 +6,6 @@ const Carousel = ({ featured, packages }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
 
-  // Auto-scroll every 5s
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % packages.length);
@@ -14,7 +13,6 @@ const Carousel = ({ featured, packages }) => {
     return () => clearInterval(interval);
   }, [packages.length]);
 
-  // Scroll to one card at a time
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
@@ -28,19 +26,16 @@ const Carousel = ({ featured, packages }) => {
 
   return (
     <div className="relative w-full px-4 mt-10">
-      {/* Featured Background Card */}
-      <FeaturedCard title={featured.title} image={featured.image} />
+      <div className="rounded-2xl border border-orange-500/30 hover:border-pink-500/50 shadow-lg hover:shadow-orange-500/50 transition">
+        <FeaturedCard title={featured.title} image={featured.image} />
+      </div>
 
-      {/* Carousel */}
       <div
         ref={containerRef}
         className="flex overflow-x-auto py-32 md:py-40 scroll-smooth scrollbar-hide"
       >
         {packages.map((pkg, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 px-2 w-[280px]" // ✅ fixed width for all cards
-          >
+          <div key={index} className="flex-shrink-0 px-2 w-[280px]">
             <CarouselCard pkg={pkg} />
           </div>
         ))}
