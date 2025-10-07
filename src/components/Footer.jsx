@@ -1,26 +1,34 @@
-import React from "react";
-import { Mail, Phone } from "lucide-react";
+import React, { useState } from "react";
+import { Mail, Phone, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+  };
+
+  const internationalTrips = ["Europe", "Bali", "Vietnam", "Thailand", "Singapore", "Bhutan", "Maldives", "Dubai", "Malaysia"];
+  const indiaTrips = ["Ladakh", "Spiti Valley", "Meghalaya", "Kashmir", "Himachal Pradesh", "Andaman", "Kerala", "Rajasthan"];
+  const wanderonSpecial = ["Community Trips", "Honeymoon Trips", "Corporate Trips", "Weekend Getaways", "School Trips"];
+
   return (
-    <footer className="bg-slate-950 text-slate-200 pt-12 pb-6">
+    <footer className="bg-zinc-900 text-gray-200 pt-12 pb-6">
       {/* Logo */}
       <div className="h-20 w-20 relative -mt-12 mx-auto">
         <img src="/assets/Logo.jpg" alt="Logo" className="rounded-full" />
       </div>
 
       {/* Footer Sections */}
-      <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+      <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-4 gap-6 mt-8">
         {/* International Trips */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-4">
-            International Trips
-          </h3>
+        <div className="md:block hidden">
+          <h3 className="text-lg font-semibold text-white mb-4">International Trips</h3>
           <ul className="space-y-2">
-            {["Europe", "Bali", "Vietnam", "Thailand", "Singapore", "Bhutan", "Maldives", "Dubai", "Malaysia"].map((item, idx) => (
+            {internationalTrips.map((item, idx) => (
               <li key={idx}>
-                <a href="#" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+                <a href="#" className="hover:text-blue-400 transition">
                   {item}
                 </a>
               </li>
@@ -29,12 +37,12 @@ const Footer = () => {
         </div>
 
         {/* India Trips */}
-        <div>
+        <div className="md:block hidden">
           <h3 className="text-lg font-semibold text-white mb-4">India Trips</h3>
           <ul className="space-y-2">
-            {["Ladakh", "Spiti Valley", "Meghalaya", "Kashmir", "Himachal Pradesh", "Andaman", "Kerala", "Rajasthan"].map((item, idx) => (
+            {indiaTrips.map((item, idx) => (
               <li key={idx}>
-                <a href="#" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+                <a href="#" className="hover:text-blue-400 transition">
                   {item}
                 </a>
               </li>
@@ -46,9 +54,9 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">WanderOn Special</h3>
           <ul className="space-y-2">
-            {["Community Trips", "Honeymoon Trips", "Corporate Trips", "Weekend Getaways", "School Trips"].map((item, idx) => (
+            {wanderonSpecial.map((item, idx) => (
               <li key={idx}>
-                <a href="#" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+                <a href="#" className="hover:text-blue-400 transition">
                   {item}
                 </a>
               </li>
@@ -61,26 +69,73 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white mb-4">About Us</h3>
           <ul className="space-y-2">
             <li>
-              <Link to="/aboutus" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+              <Link to="/aboutus" className="hover:text-blue-400 transition">
                 Our Story
               </Link>
             </li>
             <li>
-              <Link to="/contactus" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+              <Link to="/contactus" className="hover:text-blue-400 transition">
                 Contact
               </Link>
             </li>
             <li>
-              <Link to="/packages" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 transition">
+              <Link to="/packages" className="hover:text-blue-400 transition">
                 Packages
               </Link>
             </li>
           </ul>
         </div>
+
+        {/* Mobile Collapsible Menus */}
+        <div className="md:hidden mt-4">
+          {/* International Trips */}
+          <div>
+            <button
+              onClick={() => toggleMenu("international")}
+              className="w-full flex justify-between items-center py-2 font-semibold text-white"
+            >
+              International Trips
+              <ChevronDown className={`w-5 h-5 transition-transform ${openMenu === "international" ? "rotate-180" : ""}`} />
+            </button>
+            {openMenu === "international" && (
+              <ul className="pl-4 mt-2 space-y-1">
+                {internationalTrips.map((item, idx) => (
+                  <li key={idx}>
+                    <a href="#" className="hover:text-blue-400 transition">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* India Trips */}
+          <div className="mt-2">
+            <button
+              onClick={() => toggleMenu("india")}
+              className="w-full flex justify-between items-center py-2 font-semibold text-white"
+            >
+              India Trips
+              <ChevronDown className={`w-5 h-5 transition-transform ${openMenu === "india" ? "rotate-180" : ""}`} />
+            </button>
+            {openMenu === "india" && (
+              <ul className="pl-4 mt-2 space-y-1">
+                {indiaTrips.map((item, idx) => (
+                  <li key={idx}>
+                    <a href="#" className="hover:text-blue-400 transition">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Bottom Contact Info */}
-      <div className="mt-8 pt-8 text-slate-200 text-sm px-6 md:px-12 flex flex-col md:flex-row items-center gap-4 justify-center">
+      <div className="mt-8 pt-8 text-gray-200 text-sm px-6 md:px-12 flex flex-col md:flex-row items-center gap-4 justify-center">
         <div className="flex items-center gap-2">
           <Mail className="w-4 h-4" /> info.pathfy@gmail.com
         </div>
@@ -111,13 +166,13 @@ const Footer = () => {
       </div>
 
       {/* Terms & Privacy */}
-      <div className="border-t border-slate-700 pt-3 flex flex-col md:flex-row items-center justify-center md:justify-between text-slate-400 text-sm px-6 md:px-12 gap-2">
+      <div className="border-t border-blue-700 pt-3 flex flex-col md:flex-row items-center justify-center md:justify-between text-gray-400 text-sm px-6 md:px-12 gap-2">
         <p>© {new Date().getFullYear()} Pathfy. All rights reserved. | Pathfy.in</p>
         <div className="flex flex-col md:flex-row md:space-x-6 gap-1">
-          <Link to="/terms-and-conditions" className="hover:text-orange-500 transition">
+          <Link to="/terms-and-conditions" className="hover:text-blue-400 transition">
             Terms & Conditions
           </Link>
-          <Link to="/privacy-policy" className="hover:text-orange-500 transition">
+          <Link to="/privacy-policy" className="hover:text-blue-400 transition">
             Privacy Policy
           </Link>
         </div>

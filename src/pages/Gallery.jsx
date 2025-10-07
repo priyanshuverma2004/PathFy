@@ -24,7 +24,6 @@ const GalleryPage = () => {
   const [activeImage, setActiveImage] = useState(null);
   const [hoveredImage, setHoveredImage] = useState(null);
 
-  // Flatten all images for "All" category
   const allImages = galleryData.flatMap((cat) => cat.images);
 
   const imagesToShow =
@@ -34,9 +33,9 @@ const GalleryPage = () => {
         [];
 
   return (
-    <div className="relative min-h-screen bg-slate-950 py-16 px-4 overflow-hidden">
+    <div className="relative min-h-screen bg-white py-16 px-4 overflow-hidden text-gray-800">
       {/* Page Header */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-blue-600">
         Gallery
       </h1>
 
@@ -46,8 +45,8 @@ const GalleryPage = () => {
           onClick={() => setSelectedCategory("All")}
           className={`px-5 py-2 rounded-full font-semibold transition ${
             selectedCategory === "All"
-              ? "bg-orange-500 text-white shadow-lg"
-              : "bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700"
+              ? "bg-blue-600 text-white shadow-lg"
+              : "bg-gray-200 text-gray-800 border border-gray-300 hover:bg-gray-300"
           }`}
         >
           All
@@ -58,8 +57,8 @@ const GalleryPage = () => {
             onClick={() => setSelectedCategory(cat.category)}
             className={`px-5 py-2 rounded-full font-semibold transition ${
               selectedCategory === cat.category
-                ? "bg-orange-500 text-white shadow-lg"
-                : "bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700"
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-200 text-gray-800 border border-gray-300 hover:bg-gray-300"
             }`}
           >
             {cat.category}
@@ -87,7 +86,7 @@ const GalleryPage = () => {
               rotateX: hoveredImage === img ? -10 : 0,
             }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            className={`bg-slate-900/50 rounded-2xl shadow-2xl overflow-hidden cursor-pointer relative transition-all duration-300 ${
+            className={`bg-gray-100 rounded-2xl shadow-lg overflow-hidden cursor-pointer relative transition-all duration-300 ${
               activeImage ? "opacity-30" : "opacity-100"
             }`}
           >
@@ -116,7 +115,7 @@ const GalleryPage = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="bg-slate-900 rounded-3xl shadow-2xl max-w-5xl w-full overflow-hidden cursor-auto relative"
+              className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full overflow-hidden cursor-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
               <img

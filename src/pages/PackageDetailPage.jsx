@@ -11,10 +11,10 @@ const PackageDetailPage = () => {
   const pkg = allPackages.find(p => p.slug === slug);
 
   if (!pkg || !details) 
-    return <p className="text-center mt-10 text-gray-400 text-lg">Package not found</p>;
+    return <p className="text-center mt-10 text-gray-500 text-lg">Package not found</p>;
 
   return (
-    <div className="bg-slate-950 text-gray-200 min-h-screen px-4 md:px-8 py-12">
+    <div className="bg-white text-gray-800 min-h-screen px-4 md:px-8 py-12">
       
       {/* Package Header */}
       <div className="relative rounded-2xl overflow-hidden shadow-lg mb-8">
@@ -23,32 +23,32 @@ const PackageDetailPage = () => {
           alt={pkg.name} 
           className="w-full h-96 object-cover transition-transform duration-300 hover:scale-105"
         />
-        <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black/70 to-transparent w-full p-6 text-white">
+        <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black/40 to-transparent w-full p-6 text-white">
           <h1 className="text-4xl md:text-5xl font-bold">{pkg.name}</h1>
-          <p className="text-xl font-semibold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+          <p className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
             ₹{pkg.price}
           </p>
-          <p className="text-gray-300">{pkg.duration}</p>
+          <p className="text-gray-100">{pkg.duration}</p>
         </div>
       </div>
 
       {/* Package Description */}
-      <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6 mb-6">
-        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+      <div className="bg-gray-50 shadow-lg rounded-2xl p-6 mb-6">
+        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
           About the Package
         </h2>
-        <p className="text-gray-300 leading-relaxed">{details.description}</p>
+        <p className="text-gray-700 leading-relaxed">{details.description}</p>
       </div>
 
       {/* Itinerary */}
-      <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6 mb-6">
-        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+      <div className="bg-gray-50 shadow-lg rounded-2xl p-6 mb-6">
+        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
           Itinerary
         </h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-300">
+        <ul className="list-disc list-inside space-y-2 text-gray-700">
           {details.itinerary.map((day, i) => (
             <li key={i}>
-              <span className="font-semibold text-gray-200">{day.day}:</span> {day.details}
+              <span className="font-semibold text-gray-800">{day.day}:</span> {day.details}
             </li>
           ))}
         </ul>
@@ -56,37 +56,37 @@ const PackageDetailPage = () => {
 
       {/* Includes & Excludes */}
       <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6">
-          <h2 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+        <div className="bg-gray-50 shadow-lg rounded-2xl p-6">
+          <h2 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
             Includes
           </h2>
-          <ul className="list-disc list-inside space-y-1 text-gray-300">
+          <ul className="list-disc list-inside space-y-1 text-gray-700">
             {details.includes.map((inc, i) => <li key={i}>{inc}</li>)}
           </ul>
         </div>
-        <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6">
-          <h2 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+        <div className="bg-gray-50 shadow-lg rounded-2xl p-6">
+          <h2 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
             Excludes
           </h2>
-          <ul className="list-disc list-inside space-y-1 text-gray-300">
+          <ul className="list-disc list-inside space-y-1 text-gray-700">
             {details.excludes.map((exc, i) => <li key={i}>{exc}</li>)}
           </ul>
         </div>
       </div>
 
       {/* Contact */}
-      <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6 mb-6">
-        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+      <div className="bg-gray-50 shadow-lg rounded-2xl p-6 mb-6">
+        <h2 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
           Contact
         </h2>
-        <p className="text-gray-300">
+        <p className="text-gray-700">
           {details.contact.phone1} | {details.contact.phone2} | {details.contact.phone3} | {details.contact.email}
         </p>
       </div>
 
       {/* Similar Packages */}
-      <div className="bg-slate-900/50 shadow-2xl rounded-2xl p-6 mb-6">
-        <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+      <div className="bg-gray-50 shadow-lg rounded-2xl p-6 mb-6">
+        <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">
           Similar Packages
         </h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -98,7 +98,7 @@ const PackageDetailPage = () => {
               <Link
                 key={i}
                 to={`/packages/${simPkg.slug}`}
-                className="block bg-slate-900/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition"
+                className="block bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition"
               >
                 <img 
                   src={simPkg.image} 
@@ -106,11 +106,11 @@ const PackageDetailPage = () => {
                   className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-200">{simPkg.name}</h3>
-                  <p className="font-semibold bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+                  <h3 className="text-lg font-semibold text-gray-800">{simPkg.name}</h3>
+                  <p className="font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
                     ₹{simPkg.price}
                   </p>
-                  <p className="text-gray-400 text-sm">{simPkg.duration}</p>
+                  <p className="text-gray-500 text-sm">{simPkg.duration}</p>
                 </div>
               </Link>
             );
@@ -122,7 +122,7 @@ const PackageDetailPage = () => {
       <div className="text-center mt-6">
         <Link 
           to="/packages" 
-          className="inline-block px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-semibold rounded-lg shadow-md hover:scale-105 transition-transform"
+          className="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-md hover:scale-105 transition-transform"
         >
           Back to Packages
         </Link>

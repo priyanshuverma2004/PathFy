@@ -54,9 +54,9 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-slate-950 min-h-screen py-16 px-6 flex justify-center items-center">
-      <div className="bg-slate-900/60 shadow-2xl rounded-2xl p-8 max-w-md w-full border border-slate-800">
-        <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 mb-8">
+    <div className="bg-white min-h-screen py-16 px-6 flex justify-center items-center">
+      <div className="bg-gray-100 shadow-xl rounded-2xl p-8 max-w-md w-full border border-gray-300">
+        <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
           Contact Form ✨
         </h2>
 
@@ -67,7 +67,7 @@ const ContactForm = () => {
             value={formData.fullName}
             onChange={handleChange}
             placeholder="Full Name"
-            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full bg-white border border-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <input
@@ -76,7 +76,7 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Email"
-            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full bg-white border border-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <input
@@ -85,7 +85,7 @@ const ContactForm = () => {
             value={formData.contact}
             onChange={handleChange}
             placeholder="Contact Number"
-            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full bg-white border border-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <input
@@ -94,7 +94,7 @@ const ContactForm = () => {
             value={formData.destination}
             onChange={handleChange}
             placeholder="Destination"
-            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full bg-white border border-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <textarea
@@ -103,25 +103,25 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="Your Requirement"
             rows="3"
-            className="w-full bg-slate-800/50 border border-slate-700 text-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full bg-white border border-gray-300 text-gray-900 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full font-bold bg-gradient-to-r from-orange-500 to-pink-600 shadow-lg text-white py-3 px-4 rounded-lg hover:scale-105 transition-transform"
+            className="w-full font-bold bg-blue-600 shadow-lg text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
 
         {submitStatus === "success" && (
-          <p className="text-green-400 mt-4 text-center">
+          <p className="text-green-600 mt-4 text-center">
             ✅ Form submitted successfully!
           </p>
         )}
         {submitStatus === "error" && (
-          <p className="text-red-400 mt-4 text-center">
+          <p className="text-red-600 mt-4 text-center">
             ❌ Something went wrong. Try again later.
           </p>
         )}

@@ -26,10 +26,12 @@ const Carousel = ({ featured, packages }) => {
 
   return (
     <div className="relative w-full px-4 mt-10">
-      <div className="rounded-2xl border border-orange-500/30 hover:border-pink-500/50 shadow-lg hover:shadow-orange-500/50 transition">
+      {/* Featured Card */}
+      <div className="rounded-2xl border border-blue-300/40 hover:border-indigo-400/50 shadow-lg hover:shadow-blue-300/40 transition mb-10">
         <FeaturedCard title={featured.title} image={featured.image} />
       </div>
 
+      {/* Carousel Packages */}
       <div
         ref={containerRef}
         className="flex overflow-x-auto py-32 md:py-40 scroll-smooth scrollbar-hide"

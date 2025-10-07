@@ -19,9 +19,16 @@ const typingLines = [
 
 const Home = () => {
   return (
-    <div className="w-full bg-slate-950 text-white">
-      {/* Video Section */}
-      <div className="relative w-full h-screen">
+    <div
+      className="relative w-full text-gray-900 font-[Comic_Sans_MS,'Segoe_UI',sans-serif] overflow-x-hidden"
+      style={{ backgroundColor: "#FFF8F0" }}
+    >
+      {/* === Animated Blobs Background === */}
+      <div className="absolute top-[20%] -left-20 w-96 h-96 bg-[#ffffff] rounded-[60%] blur-3xl opacity-50 animate-softMove z-0"></div>
+      <div className="absolute bottom-[15%] -right-20 w-96 h-96 bg-[#D4E9FF] rounded-[70%] blur-3xl opacity-50 animate-softMove2 z-0"></div>
+
+      {/* === Video Section === */}
+      <div className="relative w-full h-screen z-10">
         <video
           autoPlay
           loop
@@ -34,24 +41,26 @@ const Home = () => {
           <source src="/assets/homevid.mp4" type="video/mp4" />
         </video>
 
-        {/* Hero text */}
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in 
-                         bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 
-                         bg-clip-text text-transparent drop-shadow-lg">
+        {/* === Hero Text === */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center px-4 text-center bg-black/40">
+          <h1
+            className="text-5xl md:text-6xl font-extrabold mb-6 
+                       bg-gradient-to-r from-[#FF8C42] via-[#FFB26B] to-[#2B7FD9]
+                       bg-clip-text text-transparent drop-shadow-lg"
+          >
             Your Travel Story Begins Here
           </h1>
           <TypingLoop lines={typingLines} />
         </div>
       </div>
 
-      {/* SearchBar */}
-      <div className="mt-10 px-4 md:px-20">
+      {/* === SearchBar === */}
+      <div className="relative mt-10 px-4 md:px-20 z-10">
         <SearchBar />
       </div>
 
-      {/* Carousels */}
-      <div className="px-4 md:px-20 space-y-10 mt-10">
+      {/* === Carousels === */}
+      <div className="relative px-4 md:px-20 space-y-10 mt-10 z-10">
         <Carousel featured={featuredSections.india} packages={indiaPackages} />
         <Carousel
           featured={featuredSections.international}
@@ -68,15 +77,19 @@ const Home = () => {
         <Carousel featured={featuredSections.group} packages={groupPackages} />
       </div>
 
-      {/* Customer Form */}
-      <div className="px-4 md:px-20 mt-10">
+      {/* === Customer Form === */}
+      <div className="relative px-4 md:px-20 mt-10 z-10">
         <CustomerForm />
       </div>
+
+      {/* === Extra floating pastel circles for subtle animation === */}
+      <div className="absolute top-[40%] left-[30%] w-40 h-40 bg-[#FF8C42]/20 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute top-[70%] right-[25%] w-52 h-52 bg-[#2B7FD9]/20 rounded-full blur-3xl animate-pulse-slow"></div>
     </div>
   );
 };
 
-// Typing loop
+// === Typing Loop ===
 const TypingLoop = ({ lines }) => {
   const [currentLine, setCurrentLine] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -105,7 +118,7 @@ const TypingLoop = ({ lines }) => {
   }, [displayedText, deleting, currentLine, lines]);
 
   return (
-    <p className="text-xl md:text-2xl font-medium text-orange-400 border-r-2 border-orange-400 pr-1 animate-blink">
+    <p className="text-xl md:text-2xl font-semibold text-[#FF8C42] border-r-2 border-[#FF8C42] pr-1 animate-blink">
       {displayedText}
     </p>
   );
